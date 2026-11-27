@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chetan Chhipa | Creative Archive</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#10100f;
+    color:#f5f2ec;
+    font-family:'Space Grotesk',sans-serif;
+}
+
+:root{
+    --orange:#ff6438;
+    --dark:#10100f;
+    --card:#191917;
+    --grey:#92918b;
+    --border:#33312d;
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:700;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:var(--orange);
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:13px;
+    transition:.3s;
+}
+
+nav ul a:hover{
+    color:var(--orange);
+}
+
+.nav-tag{
+    border:1px solid var(--orange);
+    color:var(--orange);
+    padding:9px 15px;
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+}
+
+/* HERO */
+
+.hero{
+    padding:100px 8% 90px;
+    border-bottom:1px solid var(--border);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::after{
+    content:"CC";
+    position:absolute;
+    right:5%;
+    top:10px;
+    font-size:260px;
+    font-weight:700;
+    color:rgba(255,100,56,.045);
+    pointer-events:none;
+}
+
+.small-title{
+    color:var(--orange);
+    font-family:'DM Mono',monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(55px,9vw,115px);
+    line-height:.95;
+    letter-spacing:-7px;
+    position:relative;
+    z-index:1;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-top:40px;
+    gap:30px;
+}
+
+.hero-bottom p{
+    color:var(--grey);
+    max-width:450px;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.hero-count{
+    font-size:14px;
+    font-family:'DM Mono',monospace;
+    color:var(--orange);
+    white-space:nowrap;
+}
+
+/* PROJECT SECTION */
+
+.projects{
+    padding:80px 8%;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:35px;
+}
+
+.section-heading h2{
+    font-size:42px;
+    letter-spacing:-2px;
+}
+
+.section-heading h2 span{
+    color:var(--orange);
+}
+
+.section-heading p{
+    font-family:'DM Mono',monospace;
+    color:var(--grey);
+    font-size:11px;
+}
+
+/* CSS ONLY FILTER */
+
+input[type="radio"]{
+    display:none;
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.filters label{
+    padding:11px 20px;
+    border:1px solid var(--border);
+    color:#aaa;
+    font-size:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filters label:hover{
+    border-color:var(--orange);
+    color:var(--orange);
+}
+
+/* ACTIVE FILTER */
+
+#all:checked ~ .filters label[for="all"],
+#html:checked ~ .filters label[for="html"],
+#css:checked ~ .filters label[for="css"],
+#design:checked ~ .filters label[for="design"]{
+    background:var(--orange);
+    color:#10100f;
+    border-color:var(--orange);
+}
+
+/* GRID */
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+/* PROJECT CARD */
+
+.project-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:25px;
+    min-height:260px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.project-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--orange);
+    background:#201b18;
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.number{
+    color:var(--orange);
+    font-family:'DM Mono',monospace;
+    font-size:12px;
+}
+
+.symbol{
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--border);
+    color:var(--orange);
+    font-size:20px;
+}
+
+.project-card h3{
+    margin-top:35px;
+    font-size:23px;
+    letter-spacing:-1px;
+}
+
+.category{
+    color:var(--orange);
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:10px;
+}
+
+.project-card p{
+    color:var(--grey);
+    font-size:12px;
+    line-height:1.7;
+    margin-top:15px;
+    flex:1;
+}
+
+.card-footer{
+    border-top:1px solid var(--border);
+    padding-top:17px;
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.tech{
+    color:#85847e;
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+}
+
+.view{
+    color:var(--orange);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:600;
+}
+
+.view:hover{
+    color:white;
+}
+
+/* FILTER LOGIC */
+
+#html:checked ~ .project-grid .project-card,
+#css:checked ~ .project-grid .project-card,
+#design:checked ~ .project-grid .project-card{
+    display:none;
+}
+
+#html:checked ~ .project-grid .html,
+#css:checked ~ .project-grid .css,
+#design:checked ~ .project-grid .design{
+    display:flex;
+}
+
+/* ABOUT */
+
+.about{
+    margin:10px 8% 80px;
+    padding:55px;
+    background:var(--orange);
+    color:#15110e;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+}
+
+.about h2{
+    font-size:45px;
+    letter-spacing:-2px;
+}
+
+.about p{
+    font-size:13px;
+    max-width:500px;
+    line-height:1.8;
+    margin-top:15px;
+}
+
+.about-tag{
+    border:1px solid #17110e;
+    padding:12px 18px;
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    white-space:nowrap;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:30px 8%;
+    display:flex;
+    justify-content:space-between;
+    color:var(--grey);
+    font-size:12px;
+}
+
+footer span{
+    color:var(--orange);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .project-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:20px 5%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        padding:75px 6%;
+    }
+
+    .hero h1{
+        font-size:60px;
+        letter-spacing:-4px;
+    }
+
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .projects{
+        padding:60px 5%;
+    }
+
+    .section-heading{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .section-heading h2{
+        font-size:34px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        margin:10px 5% 60px;
+        padding:30px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .about h2{
+        font-size:35px;
+    }
+
+    footer{
+        padding:25px 5%;
+        flex-direction:column;
+        gap:12px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        CHETAN<span>.</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+
+    <div class="nav-tag">
+        MY PORTFOLIO / 2026
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+    <div class="small-title">
+        WELCOME TO MY CREATIVE SPACE ↗
+    </div>
+
+    <h1>
+        THINK.<br>
+        CREATE.<br>
+        <span>REPEAT.</span>
+    </h1>
+
+    <div class="hero-bottom">
+
+        <p>
+            I'm Chetan Chhipa, a creative learner exploring
+            the world of web development. This is where
+            my assignments, experiments and ideas come together.
+        </p>
+
+        <div class="hero-count">
+            11 PROJECTS / 01 COLLECTION
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- PROJECTS -->
+
+<section class="projects" id="projects">
+
+    <div class="section-heading">
+
+        <div>
+            <div class="small-title">// THE COLLECTION</div>
+            <h2>My Work<span>.</span></h2>
+        </div>
+
+        <p>EXPLORE / DISCOVER / CREATE</p>
+
+    </div>
+
+
+    <!-- FILTER INPUTS -->
+
+    <input type="radio" name="filter" id="all" checked>
+    <input type="radio" name="filter" id="html">
+    <input type="radio" name="filter" id="css">
+    <input type="radio" name="filter" id="design">
+
+
+    <!-- FILTER BUTTONS -->
+
+    <div class="filters">
+
+        <label for="all">ALL PROJECTS</label>
+        <label for="html">HTML</label>
+        <label for="css">CSS</label>
+        <label for="design">UI DESIGN</label>
+
+    </div>
+
+
+    <!-- PROJECT CARDS -->
+
+    <div class="project-grid">
+
+
+        <!-- 01 -->
+
+        <article class="project-card css">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 01</span>
+                <div class="symbol">▧</div>
+            </div>
+
+            <h3>Background Image</h3>
+
+            <div class="category">CSS DESIGN</div>
+
+            <p>
+                Full page background image with CSS properties,
+                positioning and sizing.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Background-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 02 -->
+
+        <article class="project-card html">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 02</span>
+                <div class="symbol">▤</div>
+            </div>
+
+            <h3>News Page</h3>
+
+            <div class="category">HTML LAYOUT</div>
+
+            <p>
+                A newspaper style webpage with headlines,
+                articles and content sections.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Newspaper-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 03 -->
+
+        <article class="project-card css">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 03</span>
+                <div class="symbol">▦</div>
+            </div>
+
+            <h3>Flex Box</h3>
+
+            <div class="category">CSS LAYOUT</div>
+
+            <p>
+                Responsive layouts using Flexbox alignment,
+                spacing and distribution.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Flex_box-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 04 -->
+
+        <article class="project-card design">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 04</span>
+                <div class="symbol">▧</div>
+            </div>
+
+            <h3>Dynamic Gallery</h3>
+
+            <div class="category">UI DESIGN</div>
+
+            <p>
+                A creative image gallery with a responsive
+                layout and visual presentation.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Dynamic_Gallary-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 05 -->
+
+        <article class="project-card design">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 05</span>
+                <div class="symbol">◉</div>
+            </div>
+
+            <h3>Profile UI/UX</h3>
+
+            <div class="category">UI DESIGN</div>
+
+            <p>
+                A modern profile interface with typography,
+                spacing and user-focused design.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Profile_Card-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 06 -->
+
+        <article class="project-card css">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 06</span>
+                <div class="symbol">☰</div>
+            </div>
+
+            <h3>Navigation Bar</h3>
+
+            <div class="category">CSS DESIGN</div>
+
+            <p>
+                A stylish navigation bar with menu links
+                and hover interactions.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Navigation_Bar-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 07 -->
+
+        <article class="project-card html">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 07</span>
+                <div class="symbol">▣</div>
+            </div>
+
+            <h3>IFrame</h3>
+
+            <div class="category">HTML ELEMENTS</div>
+
+            <p>
+                Embedding external webpages and content
+                inside an HTML document.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Iframe-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 08 -->
+
+        <article class="project-card html">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 08</span>
+                <div class="symbol">▦</div>
+            </div>
+
+            <h3>HTML Table</h3>
+
+            <div class="category">HTML ELEMENTS</div>
+
+            <p>
+                Structured tables with rows, columns,
+                headers and styling.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Table-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 09 -->
+
+        <article class="project-card css">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 09</span>
+                <div class="symbol">□</div>
+            </div>
+
+            <h3>Box Model</h3>
+
+            <div class="category">CSS CONCEPTS</div>
+
+            <p>
+                Exploring content, padding, borders
+                and margins in CSS.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Box_plotting-main/index.html
+                " class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 10 -->
+
+        <article class="project-card design">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 10</span>
+                <div class="symbol">↗</div>
+            </div>
+
+            <h3>Login / Signup</h3>
+
+            <div class="category">UI DESIGN</div>
+
+            <p>
+                A modern authentication interface with
+                attractive forms and buttons.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Login_Signup-main/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- 11 -->
+
+        <article class="project-card css">
+
+            <div class="card-top">
+                <span class="number">PROJECT / 11</span>
+                <div class="symbol">✳</div>
+            </div>
+
+            <h3>Animation</h3>
+
+            <div class="category">CSS MOTION</div>
+
+            <p>
+                Creative animations using CSS keyframes
+                and smooth transitions.
+            </p>
+
+            <div class="card-footer">
+                <span class="tech">HTML + CSS</span>
+                <a href="assets/Css-Animation/index.html" class="view">
+                    EXPLORE ↗
+                </a>
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div>
+
+        <div class="small-title" style="color:#24120c">
+            // WHO AM I
+        </div>
+
+        <h2>Hi, I'm Chetan.</h2>
+
+        <p>
+            A student passionate about creativity,
+            technology and web development.
+            This portfolio is a collection of my learning journey
+            and the projects I create along the way.
+        </p>
+
+    </div>
+
+    <div class="about-tag">
+        STUDENT / CREATOR
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © 2026 <span>CHETAN CHHIPA</span>
+    </div>
+
+    <div>
+        BUILT WITH HTML & CSS ↗
+    </div>
+
+</footer>
+
+</body>
+</html>
